@@ -63,4 +63,66 @@ response = client.chat.completions.create(
     messages=completion_payload["messages"]
 )
 
-print(response)```
+print(response)
+```
+
+---
+
+## Diferencias con Ollama
+
+### ¿Qué tipo de herramienta es Ollama?
+
+Ollama es un runtime de modelos LLM local, fácil, estable y orientado a desarrolladores.
+
+Está orientado a:
+- Correr modelos localmente de forma simple.
+- Servir modelos vía API HTTP como si fuera OpenAI.
+- Prototipar apps rápidamente.
+- Integrar LLMs en backend/frontend sin complicación.
+- Uso en equipos (on-premises) donde la privacidad es prioridad.
+- Trabajar con modelos en formato GGUF altamente optimizados.
+
+Tipo de herramienta:
+- Runtime práctico + servidor de inferencia LLM
+- Muy parecido conceptualmente a:
+  - OpenAI API (pero local)
+  - LM Studio (pero sin UI)
+
+O sea, es una herramienta para usar modelos rápidamente, no para entrenarlos ni modificarlos a bajo nivel.
+
+### ¿Qué tipo de herramienta es Cortex?
+
+Cortex es una herramienta más técnica para gestionar modelos y ejecutarlos, pero con menos estabilidad.
+
+Está orientado a:
+- Descargar, gestionar e instalar modelos compatibles.
+- Ejecutar modelos LLM con opciones avanzadas.
+- Controlar ciertos aspectos de rendimiento y hardware.
+- Usuarios más técnicos que quieren otra alternativa al runtime clásico.
+
+Tipo de herramienta:
+- CLI de gestión + motor de ejecución de modelos
+- Más parecido a:
+  - `huggingface-cli` + un pequeño runtime
+  - Herramientas experimentales tipo `mlc-llm` o `koboldcpp`
+
+No es tan “API-first” ni tan pulido como Ollama.
+
+### Resumen comparativo
+
+| Característica | Ollama | Cortex |
+|----------------|--------|--------|
+| **Naturaleza** | Runtime + servidor API | CLI para modelos + runtime |
+| **Enfoque** | Usarla como una API local tipo OpenAI | Gestionar modelos y ejecutarlos manualmente |
+| **Nivel de usuario** | Intermedio / desarrolladores comunes | Más técnico |
+| **Experiencia** | Rápida, estable, fluida | Variable, más experimental |
+| **Objetivo** | Consumir modelos fácilmente | Manipular e instalar modelos específicos |
+| **Optimización** | Pre-armada y automatizada | Depende del modelo elegido |
+
+### Conclusión
+
+**Ollama** es una herramienta práctica para usar modelos y hacer apps. Mientras que **Cortex** está más orientada orientada a gestionar y ejecutar modelos manualmente.
+
+**Ollama** y **Cortex** NO son herramientas de entrenamiento, son herramientas de inferencia (ejecutar modelos).
+
+El fine-tuning se hace antes, con frameworks de ML, y después el modelo resultante se usa en **Ollama** o **Cortex**.
